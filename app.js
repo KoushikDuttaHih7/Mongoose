@@ -2,9 +2,9 @@ const path = require("path");
 
 const express = require("express");
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 
 const errorController = require("./controllers/error");
-const mongoConnect = require("./utility/database").mongoConnect;
 const User = require("./models/user");
 
 const app = express();
@@ -34,8 +34,15 @@ app.use(shopRoutes);
 
 app.use(errorController.get404);
 
-mongoConnect(() => {
-  app.listen(port, () => {
-    console.log("Server started at http://localhost:5000/");
+mongoose
+  .connect(
+    "mongodb+srv://Koushik-Shop:koushik.shop@cluster-shop.yyknzpb.mongodb.net/?retryWrites=true&w=majority"
+  )
+  .then((result) => {
+    app.listen(port, () => {
+      console.log("Server started at http://localhost:5000/");
+    });
+  })
+  .catch((err) => {
+    console.log(err);
   });
-});
