@@ -48,8 +48,10 @@ exports.getIndex = (req, res, next) => {
 // This is for my cart view
 exports.getCart = (req, res, next) => {
   req.user
-    .getCart()
-    .then((products) => {
+    .populate("cart.items.productId")
+    // .execPopulate() // .execPopulate() is not a function anymore
+    .then((user) => {
+      const products = user.cart.items;
       res.render("shop/cart", {
         path: "/cart",
         pageTitle: "Your Cart",
