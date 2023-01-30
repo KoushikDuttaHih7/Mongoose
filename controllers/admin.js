@@ -21,6 +21,7 @@ exports.postAddProduct = (req, res, next) => {
     price: price,
     description: description,
     imageUrl: imageUrl,
+    userId: req.user,
   });
   // leftside defines keys in the schema
   // rightside defines data we recieve
