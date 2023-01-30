@@ -4,22 +4,24 @@ const Schema = mongoose.Schema;
 
 const productSchema = new Schema({
   title: {
-    typr: String,
+    type: String,
     require: true,
   },
   price: {
-    typr: Number,
+    type: Number,
     require: true,
   },
   description: {
-    typr: String,
+    type: String,
     require: true,
   },
   imageUrl: {
-    typr: String,
+    type: String,
     require: true,
   },
 });
+
+module.exports = mongoose.model("Product", productSchema);
 
 // const mongodb = require("mongodb");
 // const getDb = require("../utility/database").getDb;

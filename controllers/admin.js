@@ -15,14 +15,14 @@ exports.postAddProduct = (req, res, next) => {
   const imageUrl = req.body.imageUrl;
   const description = req.body.description;
   const price = req.body.price;
-  const product = new Product(
-    title,
-    imageUrl,
-    description,
-    price,
-    null,
-    req.user._id
-  );
+  const product = new Product({
+    title: title,
+    price: price,
+    description: description,
+    imageUrl: imageUrl,
+  });
+  // leftside defines keys in the schema
+  // rightside defines data we recieve
   product
     .save()
     .then((result) => {
