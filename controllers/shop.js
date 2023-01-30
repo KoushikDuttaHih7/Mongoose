@@ -2,8 +2,9 @@ const Product = require("../models/product");
 
 // This is for all products view
 exports.getProducts = (req, res, next) => {
-  Product.fetchAll()
+  Product.find()
     .then((products) => {
+      console.log(products);
       res.render("shop/product-list", {
         prods: products,
         pageTitle: "All Products",
@@ -31,7 +32,7 @@ exports.getProduct = (req, res, next) => {
 
 // This is for index/main page products view
 exports.getIndex = (req, res, next) => {
-  Product.fetchAll()
+  Product.find()
     .then((products) => {
       res.render("shop/index", {
         prods: products,
