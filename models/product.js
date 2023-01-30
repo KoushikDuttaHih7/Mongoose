@@ -1,3 +1,26 @@
+const mongoose = require("mongoose");
+
+const Schema = mongoose.Schema;
+
+const productSchema = new Schema({
+  title: {
+    typr: String,
+    require: true,
+  },
+  price: {
+    typr: Number,
+    require: true,
+  },
+  description: {
+    typr: String,
+    require: true,
+  },
+  imageUrl: {
+    typr: String,
+    require: true,
+  },
+});
+
 // const mongodb = require("mongodb");
 // const getDb = require("../utility/database").getDb;
 // class Product {
